@@ -46,7 +46,34 @@ func main() {
 		return
 	}
 
-	// Проверка доступа
+	// Получение роли пользователя
+	role, err := handlers.GetUserRole(db, userID)
+	if err != nil {
+		fmt.Println("Error retrieving user role:", err)
+		return
+	}
+
+	if role == nil {
+		fmt.Println("User has no role assigned.")
+		return
+	}
+
+	fmt.Printf("User role: %s\n", role.Name)
+
+	// Пример логики доступа на основе роли
+	switch role.Name {
+	case "admin":
+		fmt.Println("Welcome, admin! You have full access.")
+	case "user":
+		fmt.Println("Welcome, user! You have standard access.")
+	case "guest":
+		fmt.Println("Welcome, guest! You have limited access.")
+	default:
+		fmt.Println("Unknown role.")
+		return
+	}
+
+	// Проверка доступа к ресурсу
 	fmt.Print("Enter resource: ")
 	resource, _ := reader.ReadString('\n')
 	resource = resource[:len(resource)-1]
