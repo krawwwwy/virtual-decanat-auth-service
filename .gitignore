@@ -16,6 +16,7 @@ __pycache__/
 # Игнорировать зависимости Go
 /vendor/
 
-pglog.txt
+
+a
 
 *.idea

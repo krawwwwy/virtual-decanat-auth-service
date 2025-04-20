@@ -3,6 +3,7 @@ package main
 import (
 	"3lab/handlers"
 	"3lab/utils"
+	"database/sql"
 	_ "github.com/lib/pq"
 	"html/template"
 	"log"
@@ -14,7 +15,12 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error connecting to the database: %v", err)
 	}
-	defer db.Close()
+	defer func(db *sql.DB) {
+		err := db.Close()
+		if err != nil {
+			log.Fatalf("Error closing the connection: %v", err)
+		}
+	}(db)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		tmpl := template.Must(template.ParseFiles("templates/index.html"))

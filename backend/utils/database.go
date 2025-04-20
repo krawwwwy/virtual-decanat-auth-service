@@ -7,6 +7,12 @@ import (
 	_ "github.com/lib/pq"
 )
 
+//						 |
+//						 v
+//						func init() {
+//    						sql.Register("postgres", &Driver{})
+//						}
+
 func ConnectDB() (*sql.DB, error) {
 	db, err := sql.Open("postgres", config.GetConnectionString())
 	if err != nil {
