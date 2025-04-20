@@ -1,8 +1,8 @@
 package main
 
 import (
-	"3lab/handlers"
-	"3lab/utils"
+	"auth-service/handlers"
+	"auth-service/utils"
 	"database/sql"
 	_ "github.com/lib/pq"
 	"html/template"
@@ -45,6 +45,6 @@ func main() {
 		}
 	})
 
-	log.Println("Starting server on :8080")
+	log.Println("Starting server on http://localhost:8080/")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }

@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"3lab/config"
+	"auth-service/config"
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"

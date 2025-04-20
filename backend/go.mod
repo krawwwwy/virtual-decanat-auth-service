@@ -1,4 +1,4 @@
-module 3lab
+module auth-service
 
 go 1.23.3
 

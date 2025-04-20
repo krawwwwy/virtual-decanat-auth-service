@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"3lab/models"
+	"auth-service/models"
 	"database/sql"
 	"golang.org/x/crypto/bcrypt"
 	"log"
